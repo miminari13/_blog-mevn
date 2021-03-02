@@ -6,8 +6,11 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 
 var app = express();
+// create db 'blog', add collection 'users' and fill by docs
+// ex: db.users.insert({"name":"Peter","email":"peter1111@mongo.com"})
+let usersDB = 'blog'; 
 // connect mongodb
-mongoose.connect('mongodb://localhost:27017/express_app', function(){
+mongoose.connect(`mongodb://localhost:27017/${usersDB}`, function(){
 	console.log('Connected to local db')
 })
 .catch(err => {

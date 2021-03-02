@@ -1,5 +1,11 @@
+var User = require('../models/User');
+
 module.exports.controller = (app) => {
-	app.get('/users', function(req, res){
-		res.render('users', { username: 'Miminari', description: 'This is the description of all the users' })
+	// get all users
+	app.get('/users', function(req, res) {
+		User.find({}, 'name email', function (error, users) {
+			if (error) { console.log(error); }
+			res.send(users);
+		})
 	})
 }
